@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Rating } from "@material-ui/lab";
 import currency from "currency-formatter";
-import './ProductCard.css'; // Import the CSS here
+// import './ProductCard.css'; // Import the CSS here
 
 const ProductCard = ({ product }) => {
   const options = {
