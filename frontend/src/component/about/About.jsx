@@ -114,11 +114,7 @@ const About = () => {
                           <img src="http://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-1.svg" />
                         </div>
                         <span>Giá & Ưu đãi Tốt nhất</span>
-                        <p>
-                          There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form
-                        </p>
+                       
                       </div>
                     </div>
                     <div className="col__3">
@@ -133,11 +129,7 @@ const About = () => {
                           <img src="http://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-2.svg" />
                         </div>
                         <span>Sản phẩm chất lượng cao</span>
-                        <p>
-                          There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form
-                        </p>
+                        
                       </div>
                     </div>
                     <div className="col__3">
@@ -152,11 +144,7 @@ const About = () => {
                           <img src="http://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-3.svg" />
                         </div>
                         <span>Hệ thống giao hàng nhanh</span>
-                        <p>
-                          There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form
-                        </p>
+                        
                       </div>
                     </div>
 
@@ -172,11 +160,7 @@ const About = () => {
                           <img src="http://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-4.svg" />
                         </div>
                         <span>Dịch vụ trả hàng dễ dàng</span>
-                        <p>
-                          There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form
-                        </p>
+                       
                       </div>
                     </div>
 
@@ -192,11 +176,7 @@ const About = () => {
                           <img src="http://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-5.svg" />
                         </div>
                         <span>100% hài lòng</span>
-                        <p>
-                          There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form
-                        </p>
+                        
                       </div>
                     </div>
 
@@ -212,11 +192,7 @@ const About = () => {
                           <img src="http://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-6.svg" />
                         </div>
                         <span>Great Daily Deal</span>
-                        <p>
-                          There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form
-                        </p>
+                        
                       </div>
                     </div>
                   </div>

@@ -10,9 +10,8 @@ import currency from "currency-formatter";
 import Header from "../Home/Header";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { saveNoteBuy } from "../../actions/CartAction";
+import { saveNoteBuy, clearCart } from "../../actions/CartAction";
 import { createOrder, clearErrors } from "../../actions/OrderAction";
-import { removeItemsFromCart } from "../../actions/CartAction";
 
 const ConfirmOrder = ({ history }) => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
@@ -27,15 +26,12 @@ const ConfirmOrder = ({ history }) => {
   );
 
   const subtotal = productPrice;
-  // eslint-disable-next-line
-  const shippingCharges = productPrice > 200000 ? 0 : 20000;
-
+  const shippingCharges = subtotal > 200000 ? 0 : 20000;
   const totalPrice = subtotal + shippingCharges;
 
-  // const address = `${shippingInfo.address}, ${shippingInfo.state}, ${shippingInfo.country}`;
   const address = `${shippingInfo.address}, ${shippingInfo.wards}, ${shippingInfo.district}, ${shippingInfo.province}`;
+
   const actionCreator = () => {
-    // dispatch(saveShippingInfo({ address, state, country, phoneNo }));
     dispatch(saveNoteBuy(noteBuy));
   };
 
@@ -51,6 +47,7 @@ const ConfirmOrder = ({ history }) => {
 
     history.push("/process/payment");
   };
+
   const paymentAtHome = () => {
     const orderInfo = {
       subtotal,
@@ -67,7 +64,9 @@ const ConfirmOrder = ({ history }) => {
       paymentMethod: "Thanh toán khi nhận hàng !",
     };
 
-    dispatch(createOrder(order));
+    dispatch(createOrder(order)); // Dispatch the createOrder action
+
+    dispatch(clearCart()); // Clear the cart after creating the order
 
     history.push("/successOrder");
   };
@@ -115,28 +114,26 @@ const ConfirmOrder = ({ history }) => {
             <Typography>Đơn hàng của bạn:</Typography>
 
             {cartItems && cartItems.length > 0 ? (
-  <div className="confirmCartItemsContainer">
-    {cartItems.map((item) => (
-      <div key={item.product} className="confirmCartItem">
-        <img src={item.image} alt="Product" />
-        <Link to={`/product/${item.product}`}>
-          {item.name} <br />
-          ({item.size}, {item.color})
-        </Link>
-        <span>
-          {item.quantity} x {currency.format(item.price, { code: "VND" })} ={" "}
-          <b>{currency.format(item.price * item.quantity, { code: "VND" })}</b>
-        </span>
-      </div>
-    ))}
-  </div>
-) : (
-  <p>Không có sản phẩm trong giỏ hàng.</p>
-)}
-
+              <div className="confirmCartItemsContainer">
+                {cartItems.map((item) => (
+                  <div key={item.product} className="confirmCartItem">
+                    <img src={item.image} alt="Product" />
+                    <Link to={`/product/${item.product}`}>
+                      {item.name} <br />
+                      ({item.size}, {item.color})
+                    </Link>
+                    <span>
+                      {item.quantity} x {currency.format(item.price, { code: "VND" })} ={" "}
+                      <b>{currency.format(item.price * item.quantity, { code: "VND" })}</b>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>Không có sản phẩm trong giỏ hàng.</p>
+            )}
           </div>
         </div>
-        {/*  */}
         <div>
           <div className="orderSummary">
             <Typography>Hóa đơn đặt hàng</Typography>
@@ -149,7 +146,6 @@ const ConfirmOrder = ({ history }) => {
                 <p>Phí vận chuyển:</p>
                 <span>{currency.format(shippingCharges, { code: "VND" })}</span>
               </div>
-              <div></div>
             </div>
 
             <div className="orderSummaryTotal">
@@ -159,15 +155,15 @@ const ConfirmOrder = ({ history }) => {
               <span>{currency.format(totalPrice, { code: "VND" })}</span>
             </div>
 
-            <button onClick={proceedToPayment}>Tiến hành thanh toán</button>
+            <button onClick={proceedToPayment}>Thanh toán Online</button>
             <div className="orderSummaryTotal"></div>
-            {totalPrice && totalPrice > 500000 ? (<p style={{ fontSize: "1.2vmax" }}>Không áp dụng <b>thanh toán khi nhận hàng</b> đối với đơn hàng có tổng giá trị lớn hơn <b>500.000VND</b> </p>) : (<>
+            {totalPrice && totalPrice > 500000 ? (
+              <p style={{ fontSize: "1.2vmax" }}>
+                Không áp dụng <b>thanh toán khi nhận hàng</b> đối với đơn hàng có tổng giá trị lớn hơn <b>500.000VND</b>
+              </p>
+            ) : (
               <button onClick={paymentAtHome}>Thanh toán khi nhận hàng</button>
-
-            </>
-
             )}
-            {/* <button onClick={paymentAtHome}>Thanh toán khi nhận hàng</button> */}
           </div>
         </div>
       </div>

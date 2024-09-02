@@ -44,18 +44,19 @@ export const cartReducer = (
         ...state,
         shippingInfo: action.payload,
       };
-      case SAVE_NOTE_BUY:
-        return {
-          ...state,
-          noteBuy: action.payload,
-        };
-        case CLEAR_CART:
-          return {
-            ...state,
-            cartItems: [],
-          };
+    case SAVE_NOTE_BUY:
+      return {
+        ...state,
+        noteBuy: action.payload,
+      };
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartItems: [], // Clear the cart items in the state
+      };
+
     default:
       return state;
-      
+
   }
 };

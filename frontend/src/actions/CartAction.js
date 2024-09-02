@@ -58,9 +58,13 @@ export const saveNoteBuy = (data) => async (dispatch) => {
   localStorage.setItem("noteBuy", JSON.stringify(data));
 };
 
-// CartAction.js
 
 
-export const clearCart = () => (dispatch) => {
+
+export const clearCart = () => (dispatch, getState) => {
   dispatch({ type: CLEAR_CART });
+
+  // Clear cartItems from localStorage
+  localStorage.setItem("cartItems", JSON.stringify([]));
 };
+
