@@ -47,7 +47,7 @@ const Cart = ({ history }) => {
 
   const checkoutHandler = () => {
     history.push("/login?redirect=shipping"); 
-    dispatch(clearCart());
+    
   };
 
   return (
