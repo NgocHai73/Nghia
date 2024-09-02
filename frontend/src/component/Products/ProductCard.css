@@ -1,0 +1,98 @@
+
+
+.ProductCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  padding: 12px; /* Giảm padding */
+  margin: 10px;
+  max-width: 250px;
+}
+
+.ProductCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ProductImg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px; /* Giảm khoảng cách giữa ảnh và tên sản phẩm */
+}
+
+.productName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin: 4px 0; /* Giảm khoảng cách giữa tên sản phẩm và rating */
+  text-align: center;
+}
+
+.productName:hover {
+  color: #007BFF;
+}
+
+.offerPriceBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 2px; /* Giảm khoảng cách giữa rating và giá */
+}
+
+.discountPrice {
+  font-size: 12px; /* Giảm kích thước font của giá khuyến mãi */
+  font-weight: bold;
+  color: #E74C3C;
+}
+
+.p__Price {
+  font-size: 12px; /* Giảm kích thước font của giá gốc */
+  color: #999;
+  text-decoration: line-through;
+  margin-top: 2px; /* Giảm khoảng cách giữa giá khuyến mãi và giá gốc */
+}
+
+.offerPriceBox span {
+  font-size: 12px; /* Giảm kích thước font của số lượng còn lại */
+  color: #555;
+  margin-top: 2px; /* Giảm khoảng cách giữa giá và số lượng */
+}
+
+.ratingBox {
+  display: flex;
+  align-items: center;
+  margin: 8px 0; /* Giảm khoảng cách giữa rating và các phần khác */
+}
+
+.ratingBox span {
+  font-size: 12px; /* Giảm kích thước font của số đánh giá */
+  color: #777;
+  margin-left: 4px;
+}
+
+@media (max-width: 768px) {
+  .ProductCard {
+    max-width: 100%;
+    margin: 10px auto;
+  }
+
+  .productName {
+    font-size: 12px; /* Giảm kích thước font cho thiết bị nhỏ hơn */
+  }
+
+  .discountPrice {
+    font-size: 16px; /* Giảm kích thước font cho giá khuyến mãi */
+  }
+
+  .p__Price {
+    font-size: 14px;
+  }
+}
