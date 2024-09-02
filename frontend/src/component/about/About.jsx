@@ -28,7 +28,7 @@ const About = () => {
                 {/* 1st verse */}
                 <div className="row flex">
                   <div className="col__2">
-                    <img src="https://ladigi.vn/wp-content/uploads/2020/04/nana-shop-296883.jpg" />
+                    <img src="https://www.elle.vn/wp-content/uploads/2019/02/27/elle-viet-nam-streetstyle-tuan-le-thoi-trang-35.jpg" />
                   </div>
                   <div className="col__2">
                     <div className="meta">
