@@ -9,8 +9,6 @@ import LocalMallIcon from "@material-ui/icons/LocalMall";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import ListAltIcon from "@material-ui/icons/ListAlt";
-// import Creator from "@material-ui/icons/Store";
-// import ForumIcon from "@material-ui/icons/Forum";
 import Support from "@material-ui/icons/ReportProblem";
 import QuestionMarkIcon from "@material-ui/icons/Cached";
 import Update from "@material-ui/icons/DynamicFeedOutlined";
@@ -42,12 +40,9 @@ const MoreOption = ({ history }) => {
           padding: "10px",
           flexDirection: "column",
           marginBottom: "10vh",
-          display: "none",
         }}
       >
-        {isAuthenticated === false ? (
-          ""
-        ) : (
+        {isAuthenticated && (
           <Link to="/me">
             <div
               style={{
@@ -111,13 +106,7 @@ const MoreOption = ({ history }) => {
                 marginRight: "10px",
               }}
             />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-              Mua sắm
-            </span>
+            <span style={{ color: "#000" }}>Mua sắm</span>
           </div>
         </Link>
 
@@ -136,13 +125,7 @@ const MoreOption = ({ history }) => {
                 marginRight: "10px",
               }}
             />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-              Tìm kiếm sản phẩm
-            </span>
+            <span style={{ color: "#000" }}>Tìm kiếm sản phẩm</span>
           </div>
         </Link>
 
@@ -161,13 +144,7 @@ const MoreOption = ({ history }) => {
                 marginRight: "10px",
               }}
             />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-             Giỏ hàng
-            </span>
+            <span style={{ color: "#000" }}>Giỏ hàng</span>
           </div>
         </Link>
 
@@ -186,176 +163,107 @@ const MoreOption = ({ history }) => {
                 marginRight: "10px",
               }}
             />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-              Giỏ hàng yêu thích
-            </span>
+            <span style={{ color: "#000" }}>Giỏ hàng yêu thích</span>
           </div>
         </Link>
-        {isAuthenticated === false ? (
-          ""
-        ) : (
-          <Link to="/orders">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "7px 0",
-              }}
-            >
-              <ListAltIcon
-                style={{
-                  fontSize: "30px",
-                  color: "#000",
-                  marginRight: "10px",
-                }}
-              />
-              <span
-                style={{
-                  color: "#000",
-                }}
-              >
-               Đơn hàng
-              </span>
-            </div>
-          </Link>
-        )}
 
-        {/* <Link to="/commingsoon">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              padding: "7px 0",
-            }}
-          >
-            <Creator
-              style={{
-                fontSize: "30px",
-                color: "#000",
-                marginRight: "10px",
-              }}
-            />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-              Create Own Shop
-            </span>
-          </div>
-        </Link> */}
+        {isAuthenticated && (
+          <>
+            <Link to="/orders">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "7px 0",
+                }}
+              >
+                <ListAltIcon
+                  style={{
+                    fontSize: "30px",
+                    color: "#000",
+                    marginRight: "10px",
+                  }}
+                />
+                <span style={{ color: "#000" }}>Đơn hàng</span>
+              </div>
+            </Link>
 
-        {/* <Link to="/commingsoon">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              padding: "7px 0",
-            }}
-          >
-            <ForumIcon
-              style={{
-                fontSize: "30px",
-                color: "#000",
-                marginRight: "10px",
-              }}
-            />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-              Live chat support
-            </span>
-          </div>
-        </Link> */}
-        {isAuthenticated === false ? (
-          ""
-        ) : (
-          <Link to="/password/update">
+            <Link to="/password/update">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "7px 0",
+                }}
+              >
+                <VpnKeyIcon
+                  style={{
+                    fontSize: "30px",
+                    color: "#000",
+                    marginRight: "10px",
+                  }}
+                />
+                <span style={{ color: "#000" }}>Đổi mật khẩu</span>
+              </div>
+            </Link>
+
+            <Link to="/password/forgot">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "7px 0",
+                }}
+              >
+                <QuestionMarkIcon
+                  style={{
+                    fontSize: "30px",
+                    color: "#000",
+                    marginRight: "10px",
+                  }}
+                />
+                <span style={{ color: "#000" }}>Quên mật khẩu?</span>
+              </div>
+            </Link>
+
+            <Link to="/me/update">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "7px 0",
+                }}
+              >
+                <Update
+                  style={{
+                    fontSize: "30px",
+                    color: "#000",
+                    marginRight: "10px",
+                  }}
+                />
+                <span style={{ color: "#000" }}>Trang cá nhân</span>
+              </div>
+            </Link>
+
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
                 padding: "7px 0",
+                cursor: "pointer",
               }}
+              onClick={logoutUser}
             >
-              <VpnKeyIcon
+              <ExitToAppIcon
                 style={{
                   fontSize: "30px",
                   color: "#000",
                   marginRight: "10px",
                 }}
               />
-              <span
-                style={{
-                  color: "#000",
-                }}
-              >
-                Đổi mật khẩu
-              </span>
+              <span style={{ color: "#000" }}>Đăng xuất</span>
             </div>
-          </Link>
-        )}
-        {isAuthenticated === false ? (
-          ""
-        ) : (
-          <Link to="/password/forgot">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "7px 0",
-              }}
-            >
-              <QuestionMarkIcon
-                style={{
-                  fontSize: "30px",
-                  color: "#000",
-                  marginRight: "10px",
-                }}
-              />
-              <span
-                style={{
-                  color: "#000",
-                }}
-              >
-               Quên mật khẩu?
-              </span>
-            </div>
-          </Link>
-        )}
-        {isAuthenticated === false ? (
-          ""
-        ) : (
-          <Link to="/me/update">
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "7px 0",
-              }}
-            >
-              <Update
-                style={{
-                  fontSize: "30px",
-                  color: "#000",
-                  marginRight: "10px",
-                }}
-              />
-              <span
-                style={{
-                  color: "#000",
-                }}
-              >
-                Trang cá nhân
-              </span>
-            </div>
-          </Link>
+          </>
         )}
 
         <Link to="/contact">
@@ -373,13 +281,7 @@ const MoreOption = ({ history }) => {
                 marginRight: "10px",
               }}
             />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-             Liên hệ
-            </span>
+            <span style={{ color: "#000" }}>Liên hệ</span>
           </div>
         </Link>
 
@@ -398,13 +300,7 @@ const MoreOption = ({ history }) => {
                 marginRight: "10px",
               }}
             />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-              Điều khoản người dùng
-            </span>
+            <span style={{ color: "#000" }}>Điều khoản người dùng</span>
           </div>
         </Link>
 
@@ -423,47 +319,16 @@ const MoreOption = ({ history }) => {
                 marginRight: "10px",
               }}
             />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-              Báo cáo
-            </span>
+            <span style={{ color: "#000" }}>Báo cáo</span>
           </div>
         </Link>
-
-        {isAuthenticated === false ? (
-          ""
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              padding: "7px 0",
-            }}
-            onClick={logoutUser}
-          >
-            <ExitToAppIcon
-              style={{
-                fontSize: "30px",
-                color: "#000",
-                marginRight: "10px",
-              }}
-            />
-            <span
-              style={{
-                color: "#000",
-              }}
-            >
-              Đăng xuất
-            </span>
-          </div>
-        )}
       </div>
-      <div className="bottomTab">
-            <BottomTab />
-          </div>
+
+      {window.innerWidth <= 768 && (
+        <div className="bottomTab">
+          <BottomTab />
+        </div>
+      )}
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
