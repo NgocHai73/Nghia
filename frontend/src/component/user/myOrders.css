@@ -1,11 +1,11 @@
-.myOrdersPage {
+/* .myOrdersPage {
     width: 100vw;
     max-width: 100%;
-    /* padding: 0 7vmax; */
+  
     box-sizing: border-box;
     background-color: rgb(235, 235, 235);
     position: fixed;
-    /* top: 0; */
+   
     left: 0;
     height:70%;
     display: flex;
@@ -77,4 +77,51 @@
     .MuiDataGrid-columnHeader div {
       font: 500 5vw "Roboto" !important;
     }
-  }
+  } */
+   /* Overall styling */
+.myOrdersPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* DataGrid styling */
+.myOrdersTable {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.MuiDataGrid-root {
+  /* Adjust font size, line height, and padding based on your preferences */
+  font-size: 0.875rem; /* Adjust as needed */
+  line-height: 1.5;
+  padding: 16px;
+}
+
+.MuiDataGrid-headerContainer {
+  background-color: #f5f5f5;
+  /* Consider adding a border or subtle shadow for better separation */
+}
+
+.MuiDataGrid-cell {
+  /* Adjust padding and text alignment as needed */
+  padding: 8px 16px;
+  text-align: left;
+}
+
+/* Status cell color coding */
+.greenColor {
+  color: green;
+}
+
+.redColor {
+  color: red;
+}
+
+/* Bottom tab styling */
+.bottomTab {
+  /* Adjust positioning and styling based on your BottomTab component */
+  margin-top: 2rem;
+}
