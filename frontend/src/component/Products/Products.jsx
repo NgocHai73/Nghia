@@ -384,7 +384,9 @@ const Products = ({ match }) => {
             </div>
           </div>
           <Footer />
-          <BottomTab />
+          <div className="bottomTab">
+            <BottomTab />
+          </div>
         </>
       )}
     </>

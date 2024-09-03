@@ -161,7 +161,9 @@ const Contact = () => {
         </div>
       </div>
       <Footer />
-      <BottomTab />
+      <div className="bottomTab">
+            <BottomTab />
+          </div>
     </>
   );
 };

@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../Assets/logo.webp";
+
 import PersonIcon from "@material-ui/icons/Person";
 import { logout } from "../../actions/userAction";
 import { ToastContainer, toast } from "react-toastify";

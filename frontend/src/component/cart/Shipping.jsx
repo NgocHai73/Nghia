@@ -198,7 +198,9 @@ const Shipping = ({ history }) => {
         draggable
         pauseOnHover
       />
-      <BottomTab />
+      <div className="bottomTab">
+            <BottomTab />
+          </div>
     </>
   );
 };

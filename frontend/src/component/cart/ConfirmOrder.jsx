@@ -167,7 +167,9 @@ const ConfirmOrder = ({ history }) => {
           </div>
         </div>
       </div>
-      <BottomTab />
+      <div className="bottomTab">
+            <BottomTab />
+          </div>
     </>
   );
 };

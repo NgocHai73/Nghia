@@ -149,7 +149,9 @@ const MyOrderDetails = ({ match }) => {
           </div>
         </>
       )}
-      <BottomTab />
+      <div className="bottomTab">
+            <BottomTab />
+          </div>
     </>
   );
 };

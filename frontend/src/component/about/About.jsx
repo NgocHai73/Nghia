@@ -201,7 +201,9 @@ const About = () => {
             </div>
             <Footer />
           </div>
-          <BottomTab />
+          <div className="bottomTab">
+            <BottomTab />
+          </div>
         </>
       )}
     </>

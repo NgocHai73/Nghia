@@ -66,7 +66,9 @@ const Search = ({ history,match }) => {
             </svg>
           </form>
 
-          <BottomTab />
+          <div className="bottomTab">
+            <BottomTab />
+          </div>
         </Fragment>
       </div>
       <div className="SearchContainer">

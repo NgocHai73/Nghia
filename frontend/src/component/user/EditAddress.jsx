@@ -158,7 +158,9 @@ const EditAddress = ({history}) => {
       draggable
       pauseOnHover
     />
-    <BottomTab />
+    <div className="bottomTab">
+            <BottomTab />
+          </div>
   </>
   )
 }

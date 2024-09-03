@@ -128,7 +128,9 @@ const Profile = ({ history }) => {
             </div>
           </div>
           <Footer />
-          <BottomTab />
+          <div className="bottomTab">
+            <BottomTab />
+          </div>
         </>
       )}
     </>

@@ -577,7 +577,9 @@ const ProductDetails = ({ match, history }) => {
             pauseOnHover
           />
           <Footer />
-          <BottomTab />
+          <div className="bottomTab">
+            <BottomTab />
+          </div>
         </>
       )}
     </>

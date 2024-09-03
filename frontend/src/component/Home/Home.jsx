@@ -42,16 +42,10 @@ const Home = () => {
           <MetaData title="Trường Nam Shop " />
           <Header />
           {/* Carousel */}
-          <div
-            className="banner">
-            <Carousel
-              style={{
-                overflow: "hidden",
-              }}
-            >
+          <div className="banner">
+            <Carousel style={{ overflow: "hidden" }}>
               <img src={bg2} className="bgImg" />
               <img src={bg} className="bgImg" />
-
               <img src={bg3} className="bgImg" />
               <img src={bg4} className="bgImg" />
             </Carousel>
@@ -66,7 +60,7 @@ const Home = () => {
                 <ProductCard key={product._id} product={product} />
               ))}
           </div>
-         
+
           <ToastContainer
             position="bottom-center"
             autoClose={5000}
@@ -81,7 +75,11 @@ const Home = () => {
 
           <Footer />
 
-          <BottomTab />
+          <div className="bottomTab">
+            <div className="bottomTab">
+            <BottomTab />
+          </div>
+          </div>
         </>
       )}
     </>

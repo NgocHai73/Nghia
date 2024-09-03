@@ -46,7 +46,9 @@ const CheckoutSteps = ({ activeStep }) => {
           </Step>
         ))}
       </Stepper>
-      <BottomTab />
+      <div className="bottomTab">
+            <BottomTab />
+          </div>
     </>
   );
 };

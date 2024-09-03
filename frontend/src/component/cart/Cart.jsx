@@ -58,7 +58,9 @@ const Cart = ({ history }) => {
           <RemoveShoppingCartIcon />
           <Typography>Giỏ hàng trống!!!</Typography>
           <Link to="/products">Mua ngay!!!</Link>
-          <BottomTab />
+          <div className="bottomTab">
+            <BottomTab />
+          </div>
         </div>
       ) : (
         <>
@@ -126,7 +128,9 @@ const Cart = ({ history }) => {
             draggable
             pauseOnHover
           />
-          <BottomTab />
+          <div className="bottomTab">
+            <BottomTab />
+          </div>
         </>
       )}
     </>

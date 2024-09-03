@@ -26,7 +26,9 @@ const CommingSoon = () => {
                 </div>
             </div>
             </div>
+            <div className="bottomTab">
             <BottomTab />
+          </div>
         </>
         )}
         </>

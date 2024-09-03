@@ -41,7 +41,9 @@ const Rules = () => {
             </ul>
         </div>
         <Footer />
-        <BottomTab />
+        <div className="bottomTab">
+            <BottomTab />
+          </div>
         </>
     )
 }

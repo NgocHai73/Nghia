@@ -38,7 +38,11 @@ const Favourite = ({history}) => {
             <RemoveShoppingCartIcon />
             <Typography>Không có sản phẩm yêu thích!!!</Typography>
             <Link to="/products">Mua ngay!!!</Link>
-          <BottomTab />
+            <div className="bottomTab">
+            <div className="bottomTab">
+            <BottomTab />
+          </div>
+          </div>
           </div>
         ): (
             <>
@@ -57,7 +61,9 @@ const Favourite = ({history}) => {
                     </div>
                 ))
                 }
-             <BottomTab />
+             <div className="bottomTab">
+            <BottomTab />
+          </div>
               </div>
             </>
         )}

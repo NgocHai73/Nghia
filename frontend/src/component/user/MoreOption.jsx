@@ -461,7 +461,9 @@ const MoreOption = ({ history }) => {
           </div>
         )}
       </div>
-      <BottomTab />
+      <div className="bottomTab">
+            <BottomTab />
+          </div>
       <ToastContainer
         position="bottom-center"
         autoClose={5000}
