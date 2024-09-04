@@ -33,6 +33,13 @@ const ProductDetails = ({ match, history }) => {
 
 
   const { isAuthenticated } = useSelector((state) => state.user);
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getProductDetails(match.params.id));
+  }, [dispatch, match.params.id, error]);
 
   const reviewSubmitHandler = (e) => {
     e.preventDefault();
@@ -66,13 +73,7 @@ const ProductDetails = ({ match, history }) => {
 //  console.log(product.sizes[0].name)
 //  console.log(product.color[0].name)
 
-  useEffect(() => {
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
-    }
-    dispatch(getProductDetails(match.params.id));
-  }, [dispatch, match.params.id, error, alert]);
+  
 
   const options = {
     value: product.ratings,
@@ -94,16 +95,28 @@ const ProductDetails = ({ match, history }) => {
     const qty = quantity - 1;
     setQuantity(qty);
   };
+  const handleQuantityChange = (e) => {
+    let value = parseInt(e.target.value);
 
-  const addToCartHandler = () => {
-    
-    if (product.Stock > 0) {
+    if (isNaN(value) || value < 1) {
+        value = 1;
+    } else if (value > product.Stock) {
+        toast.error("Số lượng sản phẩm có giới hạn!!");
+        value = product.Stock;
+    }
+
+    setQuantity(value);
+};
+
+const addToCartHandler = () => {
+  if (product.Stock > 0) {
       dispatch(addItemsToCart(match.params.id, quantity, color, size));
       toast.success("Đã thêm sản phẩm vào giỏ hàng!");
-    } else {
+  } else {
       toast.error("Số lượng sản phẩm có giới hạn!!");
-    }
-  };
+  }
+};
+
 
   const addToFavouriteHandler = () => {
     dispatch(addFavouriteItemsToCart(match.params.id, quantity));
@@ -170,9 +183,16 @@ const ProductDetails = ({ match, history }) => {
                   <span className="quantity">Số lượng:</span>
                   <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>-</button>
-                    <input type="number" style={{textAlign:"center", fontWeight:"550"}} readOnly value={quantity} />
+                    <input
+                      type="number"
+                      style={{ textAlign: "center", fontWeight: "550" }}
+                      value={quantity}
+                      onChange={handleQuantityChange}
+                      min="1"
+                      max={product.Stock}
+                    />
                     <button onClick={increaseQuantity}>+</button>
-                  </div>{" "}
+                  </div>
                 </div>
                 <p
                   className="stock__meta"

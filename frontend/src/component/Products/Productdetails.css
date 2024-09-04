@@ -62,7 +62,7 @@ p.noReviews {
 input[type="number"] {
   border: none;
   width: 100%;
-  /* text-align: center; */
+ 
 }
 
 @media screen and (max-width: 600px) {
