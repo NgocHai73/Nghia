@@ -86,7 +86,7 @@ const ProductDetails = ({ match, history }) => {
 
 
   const increaseQuantity = () => {
-    if (product.Stock <= quantity) return toast.error("Số lượng sản phẩm có giới hạn!!!");
+    if (product.Stock <= quantity) return toast.error("Số lượng hàng trong kho không đủ!!!");
     const qty = quantity + 1;
     setQuantity(qty);
   };
@@ -101,7 +101,7 @@ const ProductDetails = ({ match, history }) => {
     if (isNaN(value) || value < 1) {
         value = 1;
     } else if (value > product.Stock) {
-        toast.error("Số lượng sản phẩm có giới hạn!!");
+        toast.error("Số lượng hàng trong kho không đủ!!");
         value = product.Stock;
     }
 
