@@ -113,7 +113,7 @@ const addToCartHandler = () => {
       dispatch(addItemsToCart(match.params.id, quantity, color, size));
       toast.success("Đã thêm sản phẩm vào giỏ hàng!");
   } else {
-      toast.error("Số lượng sản phẩm có giới hạn!!");
+      toast.error("Số lượng hàng trong kho không đủ !!");
   }
 };
 
