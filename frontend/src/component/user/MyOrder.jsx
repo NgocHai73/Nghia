@@ -74,15 +74,20 @@ const MyOrder = () => {
   const rows = [];
 
   orders &&
-    orders.forEach((item, index) => {
-      rows.push({
-        itemsQty: item.orderItems.length === 0 ? 1 : item.orderItems.length,
-        id: item._id,
-        timeProduct: item.createdAt.slice(0, 10),
-        status: item.orderStatus,
-        amount: item.totalPrice,
-      });
+  orders.forEach((item, index) => {
+    const totalQuantity = item.orderItems.reduce(
+      (total, product) => total + product.quantity,
+      0
+    );
+    rows.push({
+      itemsQty: totalQuantity,
+      id: item._id,
+      timeProduct: item.createdAt.slice(0, 10),
+      status: item.orderStatus,
+      amount: item.totalPrice,
     });
+  });
+
 
   useEffect(() => {
     if (error) {

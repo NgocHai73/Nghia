@@ -163,7 +163,7 @@ const UpdateProduct = ({ history, match }) => {
     updateError,
   ]);
 
-  const updateProductSubmitHandler  = (e) => {
+  const updateProductSubmitHandler = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
@@ -174,39 +174,52 @@ const UpdateProduct = ({ history, match }) => {
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("Stock", Stock);
-    myForm.set("Stock", Stock);
     myForm.append("sizes", JSON.stringify(sizeList));
     myForm.append("color", JSON.stringify(colorList));
-    // myForm.set("supplier", supplier);
 
-
-    images.forEach((image) => {
-      myForm.append("images", image);
+    // Thêm ảnh cũ vào FormData
+    oldImages.forEach((image) => {
+        myForm.append("images", image.url); // Sử dụng URL của ảnh cũ
     });
+
+    // Chỉ thêm ảnh mới vào FormData nếu có ảnh mới
+    if (images.length > 0) {
+        images.forEach((image) => {
+            myForm.append("images", image);
+        });
+    }
+
+    // Debug: Kiểm tra dữ liệu trước khi gửi
+    for (var pair of myForm.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+    }
+
     dispatch(updateProduct(productId, myForm));
-    console.log("đã submit")
-  };
+};
 
-  const updateProductImagesChange = (e) => {
-    const files = Array.from(e.target.files); 
+// Cập nhật hàm xử lý ảnh mới
+const updateProductImagesChange = (e) => {
+    const files = Array.from(e.target.files);
 
-    setImages([]);
-    setImagesPreview([]);
-    setOldImages([]);
+    setImages([]);          // Reset danh sách ảnh mới
+    setImagesPreview([]);   // Reset danh sách ảnh xem trước
+    // Không reset oldImages để giữ lại ảnh cũ
 
     files.forEach((file) => {
-      const reader = new FileReader();
+        const reader = new FileReader();
 
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
-        }
-      };
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setImagesPreview((old) => [...old, reader.result]); // Cập nhật ảnh xem trước
+                setImages((old) => [...old, reader.result]);       // Cập nhật danh sách ảnh mới
+            }
+        };
 
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
     });
-  };
+};
+
+
 
 
   return (

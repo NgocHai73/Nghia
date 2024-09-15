@@ -50,12 +50,14 @@ const ProductDetails = ({ match, history }) => {
     myForm.set("comment", comment);
     myForm.set("productId", match.params.id);
 
+    // eslint-disable-next-line no-lone-blocks
     {
       isAuthenticated !== true ? history.push(`/login?redirect=/`) : <></>;
     }
 
     dispatch(newReview(myForm));
 
+    // eslint-disable-next-line no-lone-blocks
     {
       comment.length === 0
         ? toast.error("Please fill the comment box")
@@ -109,13 +111,32 @@ const ProductDetails = ({ match, history }) => {
 };
 
 const addToCartHandler = () => {
-  if (product.Stock > 0) {
-      dispatch(addItemsToCart(match.params.id, quantity, color, size));
-      toast.success("Đã thêm sản phẩm vào giỏ hàng!");
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  // Kiểm tra nếu sản phẩm đã tồn tại trong giỏ hàng
+  const existingItem = cartItems.find(
+    (item) => item.product === match.params.id && item.color === color && item.size === size
+  );
+
+  if (existingItem) {
+    // Cộng dồn số lượng sản phẩm đã có trong giỏ hàng
+    const updatedQuantity = existingItem.quantity + quantity;
+
+    // Nếu số lượng mới vượt quá kho, thông báo lỗi
+    if (updatedQuantity > product.Stock) {
+      return toast.error("Số lượng hàng trong kho không đủ!!");
+    }
+
+    // Cập nhật số lượng sản phẩm trong giỏ hàng
+    dispatch(addItemsToCart(match.params.id, updatedQuantity, color, size));
+    toast.success("Đã cập nhật giỏ hàng!");
   } else {
-      toast.error("Số lượng hàng trong kho không đủ !!");
+    // Thêm sản phẩm mới vào giỏ hàng
+    dispatch(addItemsToCart(match.params.id, quantity, color, size));
+    toast.success("Đã thêm sản phẩm vào giỏ hàng!");
   }
 };
+
 
 
   const addToFavouriteHandler = () => {
@@ -176,7 +197,7 @@ const addToCartHandler = () => {
                     {currency.format(product.price, { code: "VND" })}
                   </h1>
                   <h1 className="discountPrice">
-                    {product.offerPrice > 0 ? `đ${product.offerPrice}` : ""}
+                    {product.offerPrice > 0 ? `${product.offerPrice}đ` : ""}
                   </h1>
                 </div>
                 <div className="detailsBlock-3-1">
