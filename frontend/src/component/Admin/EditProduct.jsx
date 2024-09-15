@@ -137,33 +137,26 @@ const UpdateProduct = ({ history, match }) => {
       setColorList(product.color);
       // setSupplier(product.supplier);
     }
+  
     if (error) {
       toast.error(error);
       dispatch(clearErrors());
     }
-
+  
     if (updateError) {
       toast.error(updateError);
       dispatch(clearErrors());
     }
-
+  
     if (isUpdated) {
       toast.success("Product Updated Successfully");
       history.push("/admin/products");
       dispatch({ type: UPDATE_PRODUCT_RESET });
     }
-  }, [
-    dispatch,
-    alert,
-    error,
-    history,
-    isUpdated,
-    productId,
-    product,
-    updateError,
-  ]);
+  }, [dispatch, error, history, isUpdated, productId, product, updateError]);
+  
 
-  const updateProductSubmitHandler = (e) => {
+  const updateProductSubmitHandler  = (e) => {
     e.preventDefault();
 
     const myForm = new FormData();
@@ -174,52 +167,39 @@ const UpdateProduct = ({ history, match }) => {
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("Stock", Stock);
+    myForm.set("Stock", Stock);
     myForm.append("sizes", JSON.stringify(sizeList));
     myForm.append("color", JSON.stringify(colorList));
+    // myForm.set("supplier", supplier);
 
-    // Thêm ảnh cũ vào FormData
-    oldImages.forEach((image) => {
-        myForm.append("images", image.url); // Sử dụng URL của ảnh cũ
+
+    images.forEach((image) => {
+      myForm.append("images", image);
     });
-
-    // Chỉ thêm ảnh mới vào FormData nếu có ảnh mới
-    if (images.length > 0) {
-        images.forEach((image) => {
-            myForm.append("images", image);
-        });
-    }
-
-    // Debug: Kiểm tra dữ liệu trước khi gửi
-    for (var pair of myForm.entries()) {
-        console.log(pair[0] + ': ' + pair[1]);
-    }
-
     dispatch(updateProduct(productId, myForm));
-};
+    toast.success("Đã cập nhật sản phẩm thành công");
+  };
 
-// Cập nhật hàm xử lý ảnh mới
-const updateProductImagesChange = (e) => {
-    const files = Array.from(e.target.files);
+  const updateProductImagesChange = (e) => {
+    const files = Array.from(e.target.files); 
 
-    setImages([]);          // Reset danh sách ảnh mới
-    setImagesPreview([]);   // Reset danh sách ảnh xem trước
-    // Không reset oldImages để giữ lại ảnh cũ
+    setImages([]);
+    setImagesPreview([]);
+    setOldImages([]);
 
     files.forEach((file) => {
-        const reader = new FileReader();
+      const reader = new FileReader();
 
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setImagesPreview((old) => [...old, reader.result]); // Cập nhật ảnh xem trước
-                setImages((old) => [...old, reader.result]);       // Cập nhật danh sách ảnh mới
-            }
-        };
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImagesPreview((old) => [...old, reader.result]);
+          setImages((old) => [...old, reader.result]);
+        }
+      };
 
-        reader.readAsDataURL(file);
+      reader.readAsDataURL(file);
     });
-};
-
-
+  };
 
 
   return (
