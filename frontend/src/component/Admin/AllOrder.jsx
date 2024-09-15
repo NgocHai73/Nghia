@@ -109,18 +109,21 @@ const AllOrder = ({ history }) => {
 
   const rows = [];
 
-  orders &&
-    orders.forEach((item) => {
-      rows.push({
-        id: item._id,
-        itemsQty: item.orderItems.length,
-        amount: item.totalPrice,
-        status: item.orderStatus,
-        createAt: formatDistanceToNow(new Date(item.createdAt), {
-          addSuffix: true,
-        })
-      });
+orders &&
+  orders.forEach((item) => {
+    const totalQuantity = item.orderItems.reduce((acc, cur) => acc + cur.quantity, 0);
+
+    rows.push({
+      id: item._id,
+      itemsQty: totalQuantity, // Updated to reflect the total quantity of items
+      amount: item.totalPrice,
+      status: item.orderStatus,
+      createAt: formatDistanceToNow(new Date(item.createdAt), {
+        addSuffix: true,
+      }),
     });
+  });
+
 
   return (
     <Fragment>
